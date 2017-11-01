@@ -881,14 +881,14 @@ program define rcall , rclass
 	// -------------------------------------------------------------------------
 	// Create temporary Rscript file
 	// =========================================================================
-	capture findfile stata.output.R, path("`c(sysdir_plus)'s")
+	capture findfile stata.output.r, path("`c(sysdir_plus)'s")
 	if _rc != 0 {
-		di as err "stata.output.R script file not found. reinstall the package"
+		di as err "stata.output.r script file not found. reinstall the package"
 		err 198
 	}
 	local source `r(fn)'
 	
-	//Change the stata.output.R path in Windows
+	//Change the stata.output.r path in Windows
 	if "`c(os)'" == "Windows" {
 		local source : subinstr local source "\" "/", all				 
 	}
@@ -907,7 +907,7 @@ program define rcall , rclass
 	// get the path to PLUS/r
 	local plusR "`c(sysdir_plus)'r"
 	
-	//Change the stata.output.R path in Windows
+	//Change the stata.output.r path in Windows
 	if "`c(os)'" == "Windows" {
 		local RProfile : subinstr local RProfile "\" "/", all
 		local RSite : subinstr local RProfile "\" "/", all
